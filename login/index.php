@@ -1,5 +1,33 @@
 <?php
 include("conexion.php");
+//session_start();
+//if(isset($_SESSION['id_usuario'])){
+//	header("Location: admin.php");
+//}
+//Login
+
+if(isset($_POST["ingresar"])){
+	
+	$correo = mysqli_real_escape_string($conexion,$_POST['correo']);
+	$contraseña = mysqli_real_escape_string($conexion,$_POST['pass']);
+	
+	//$contraseña_encriptada = sha1($contraseña);
+	$sql = "SELECT id_usuario FROM usuario
+						WHERE correo ='$correo' AND contraseña = '$contraseña' ";
+	$resultado = $conexion->query($sql);
+	$rows = $resultadocorreo->num_rows;
+	if($rows > 0){
+		$row = $resultado->fetch_assoc();
+		$_SESSION['id_usuario'] = $row['id_usuario'];
+		header('Location: admin.php');
+		
+	}else{
+		echo "<script>
+				alert('Error el usuario no existe o la contraseña es incorrecta');
+				window.location = 'index.php';
+		</script>";
+	}
+}
 
 //Registro de Usuario
 
@@ -9,7 +37,7 @@ include("conexion.php");
 	$correo = mysqli_real_escape_string($conexion,$_POST['correo']);
 	$contraseña = mysqli_real_escape_string($conexion,$_POST['pass']);
 	$fecha_nacimiento = mysqli_real_escape_string($conexion,$_POST['fecha_nacimiento']);
-	$contraseña_encriptada = sha1($contraseña);
+	//$contraseña_encriptada = sha1($contraseña);
 	$sqluser = "SELECT correo FROM usuario
 						WHERE correo='$correo'";
 	$resultadocorreo = $conexion->query($sqluser);
@@ -22,7 +50,7 @@ include("conexion.php");
 	}else{
 		//insertar informacion del usuario
 		$sqlusuario = "INSERT INTO usuario(nombre,apellido,correo,contraseña,fecha_nacimiento)
-						VALUES('$nombre','$apellido','$correo','$contraseña_encriptada','$fecha_nacimiento')";
+						VALUES('$nombre','$apellido','$correo','$contraseña','$fecha_nacimiento')";
 		$resultadousuario = $conexion->query($sqlusuario);
 		if ($resultadousuario > 0) {
 			echo "<script>
@@ -39,24 +67,7 @@ include("conexion.php");
 	}
 
 }
-if(isset($_POST["ingresar"])){
-	$correo = mysqli_real_escape_string($conexion,$_POST['correo']);
-	$sqluser = "SELECT correo FROM usuario
-						WHERE correo='$correo'";
-	$resultadocorreo = $conexion->query($sqluser);
-	$filas = $resultadocorreo->num_rows;
-	if($filas > 0){
-		echo "<script>
-				alert('Ingreso Exitoso!');
-				window.location = 'html/index.html';
-		</script>";
-	}else{
-		echo "<script>
-				alert('Error el usuario no existe');
-				window.location = 'index.php';
-		</script>";
-	}
-}
+
 
 ?>
 <!DOCTYPE html>
@@ -128,14 +139,14 @@ if(isset($_POST["ingresar"])){
 												<fieldset>
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="text" class="form-control"  name="correo"placeholder="Correo" />
+															<input type="text" class="form-control"  name="correo"placeholder="Correo" required />
 															<i class="ace-icon fa fa-envelope"></i>
 														</span>
 													</label>
 
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="password" name="pass"class="form-control" placeholder="Contraseña" />
+															<input type="password" name="pass"class="form-control" placeholder="Contraseña" required />
 															<i class="ace-icon fa fa-lock"></i>
 														</span>
 													</label>

@@ -1,3 +1,17 @@
+<?php
+include("conexion.php");
+//session_start();
+//if(!isset($_SESSION['id_usuario'])){
+//	header("Location: index.php");
+//}
+
+
+//$iduser = $_SESSION['id_usuario'];
+//$sql ="SELECT id_usuario, nombre FROM usuario WHERE id_usiario = '$iduser'";
+//$resultado = $conexion->query($sql);
+//$row = $resultado->fetch_assoc();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
