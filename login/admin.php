@@ -1,15 +1,13 @@
 <?php
 include("conexion.php");
-//session_start();
-//if(!isset($_SESSION['id_usuario'])){
-//	header("Location: index.php");
-//}
+session_start();
+if(!isset($_SESSION['id_usuario'])){
+	header("Location: index.php");
+}
+$iduser = $_SESSION['id_usuario'];
+$sql = " SELECT id_usuario, nombre FROM usuario WHERE id_usiario = '$iduser'";
+$resultado = $conexion->query($sql);
 
-
-//$iduser = $_SESSION['id_usuario'];
-//$sql ="SELECT id_usuario, nombre FROM usuario WHERE id_usiario = '$iduser'";
-//$resultado = $conexion->query($sql);
-//$row = $resultado->fetch_assoc();
 ?>
 
 <!DOCTYPE html>
@@ -131,7 +129,7 @@ include("conexion.php");
 								<span class="user-info">
 									<small>Bienvenid@</small>
 									<!-- Mostrar Nombre del Usuario Logueado-->
-									Jairo Galeas		
+										
 								</span>
 
 								<i class="ace-icon fa fa-caret-down"></i>
@@ -150,7 +148,7 @@ include("conexion.php");
 								<li class="divider"></li>
 
 								<li>
-									<a href="#">
+									<a href="salir.php">
 										<i class="ace-icon fa fa-power-off"></i>
 										Salir
 									</a>

@@ -1,21 +1,20 @@
 <?php
 include("conexion.php");
-//session_start();
-//if(isset($_SESSION['id_usuario'])){
-//	header("Location: admin.php");
-//}
+session_start();
+if(isset($_SESSION['id_usuario'])){
+	header("Location: admin.php");
+}
 //Login
 
 if(isset($_POST["ingresar"])){
 	
 	$correo = mysqli_real_escape_string($conexion,$_POST['correo']);
 	$contraseña = mysqli_real_escape_string($conexion,$_POST['pass']);
-	
 	//$contraseña_encriptada = sha1($contraseña);
 	$sql = "SELECT id_usuario FROM usuario
 						WHERE correo ='$correo' AND contraseña = '$contraseña' ";
 	$resultado = $conexion->query($sql);
-	$rows = $resultadocorreo->num_rows;
+	$rows = $resultado->num_rows;
 	if($rows > 0){
 		$row = $resultado->fetch_assoc();
 		$_SESSION['id_usuario'] = $row['id_usuario'];
