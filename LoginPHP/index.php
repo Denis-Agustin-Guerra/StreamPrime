@@ -1,3 +1,64 @@
+<?php
+include("conexion.php");
+
+//Registro de Usuario
+
+ if(isset($_POST["registrar"])){
+	$nombre = mysqli_real_escape_string($conexion,$_POST['nombre']);
+	$apellido = mysqli_real_escape_string($conexion,$_POST['apellido']);
+	$correo = mysqli_real_escape_string($conexion,$_POST['correo']);
+	$contraseña = mysqli_real_escape_string($conexion,$_POST['pass']);
+	$fecha_nacimiento = mysqli_real_escape_string($conexion,$_POST['fecha_nacimiento']);
+	$contraseña_encriptada = sha1($contraseña);
+	$sqluser = "SELECT correo FROM usuario
+						WHERE correo='$correo'";
+	$resultadocorreo = $conexion->query($sqluser);
+	$filas = $resultadocorreo->num_rows;
+	if($filas > 0){
+		echo "<script>
+				alert('El usuario ya existe');
+				window.location = 'index.php';
+		</script>";
+	}else{
+		//insertar informacion del usuario
+		$sqlusuario = "INSERT INTO usuario(nombre,apellido,correo,contraseña,fecha_nacimiento)
+						VALUES('$nombre','$apellido','$correo','$contraseña_encriptada','$fecha_nacimiento')";
+		$resultadousuario = $conexion->query($sqlusuario);
+		if ($resultadousuario > 0) {
+			echo "<script>
+				alert('Registro exitoso');
+				window.location = 'index.php';
+		</script>";
+		}else{
+			echo "<script>
+				alert('Error al registrarse');
+				window.location = 'index.php';
+		</script>";
+		}
+
+	}
+
+}
+if(isset($_POST["ingresar"])){
+	$correo = mysqli_real_escape_string($conexion,$_POST['correo']);
+	$sqluser = "SELECT correo FROM usuario
+						WHERE correo='$correo'";
+	$resultadocorreo = $conexion->query($sqluser);
+	$filas = $resultadocorreo->num_rows;
+	if($filas > 0){
+		echo "<script>
+				alert('Ingreso Exitoso!');
+				window.location = 'html/index.html';
+		</script>";
+	}else{
+		echo "<script>
+				alert('Error el usuario no existe');
+				window.location = 'index.php';
+		</script>";
+	}
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -43,11 +104,11 @@
 						<div class="login-container">
 							<div class="center">
 								<h1>
-									<i class="ace-icon fa fa-leaf green"></i>
+									<i class="ace-icon fa fa-user green"></i>
 									<span class="red">Sistema </span>
 									<span class="white" id="id-text2">de Usuarios</span>
 								</h1>
-								<h4 class="blue" id="id-company-text">&copy; Impartiendo Conocimiento</h4>
+								<h4 class="blue" id="id-company-text"> StreamPrime tu plataforma de streaming </h4>
 							</div>
 
 							<div class="space-6"></div>
@@ -57,7 +118,7 @@
 									<div class="widget-body">
 										<div class="widget-main">
 											<h4 class="header blue lighter bigger">
-												<i class="ace-icon fa fa-coffee green"></i>
+												<i class="ace-icon fa fa-user green"></i>
 												Ingresa tu Informacion
 											</h4>
 
@@ -67,8 +128,8 @@
 												<fieldset>
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="text" class="form-control"  name="user"placeholder="Usuario" />
-															<i class="ace-icon fa fa-user"></i>
+															<input type="text" class="form-control"  name="correo"placeholder="Correo" />
+															<i class="ace-icon fa fa-envelope"></i>
 														</span>
 													</label>
 
@@ -87,7 +148,7 @@
 															<span class="lbl"> Recordarme</span>
 														</label>
 
-											<button type="submit" class="width-35 pull-right btn btn-sm btn-primary">
+											<button type="submit" name="ingresar" class="width-35 pull-right btn btn-sm btn-primary">
 												<i class="ace-icon fa fa-key"></i>
 												<span class="bigger-110">Ingresar</span>
 											</button>
@@ -99,29 +160,30 @@
 												</fieldset>
 											</form>
 
-											<div class="social-or-login center">
+											
+											<!--<div class="social-or-login center">
 												<span class="bigger-110">Suscribete</span>
-											</div>
+											</div> -->
 
 											<div class="space-6"></div>
 
-											<div class="social-login center">
-												<a href="http://bit.ly/SuscribirseIC" target="_blank" class="btn btn-danger">
+											<!--<div class="social-login center">
+												<a href="" target="_blank" class="btn btn-danger">
 													<i class="ace-icon fa fa-youtube" ></i>
 												</a>
-												<a href="https://www.facebook.com/impartiendoconocimiento" target="_blank" class="btn btn-primary">
+												<a href="" target="_blank" class="btn btn-primary">
 													<i class="ace-icon fa fa-facebook"></i>
 												</a>
 
-												<a href="https://twitter.com/jasingafi" target="_blank" class="btn btn-info">
+												<a href="" target="_blank" class="btn btn-info">
 													<i class="ace-icon fa fa-twitter"></i>
 												</a>
 
-												<a href="https://www.instagram.com/jasingafi/" target="_blank" class="btn btn-danger">
+												<a href="" target="_blank" class="btn btn-danger">
 													<i class="ace-icon fa fa-instagram"></i>
 												</a>
-											</div>
-										</div><!-- /.widget-main -->
+											</div> -->
+										</div><!-- /.widget-main --> 
 
 										<div class="toolbar clearfix">
 											<div>
@@ -186,35 +248,36 @@
 			<div class="widget-main">
 				<h4 class="header green lighter bigger">
 					<i class="ace-icon fa fa-users blue"></i>
-						Registro de Nuevos Usuarios
+						Registro de nuevos usuarios
 				</h4>
 	<div class="space-6"></div>
 		<p>Ingresa los datos solicitados acontinuacion: </p>
 		<form action="<?php $_SERVER["PHP_SELF"]; ?>" method="POST" >
 			<fieldset>
-			            <label class="block clearfix">
+			    <label class="block clearfix">
 					<span class="block input-icon input-icon-right">
-						<input type="text" class="form-control"  name="nombre" placeholder="Nombre Completo"  required />
-							<i class="ace-icon fa fa-users"></i>
+						<input type="text" class="form-control"  name="nombre" placeholder="Nombre"  required />
+							<i class="ace-icon fa fa-user"></i>
+					</span>
+				</label>
+
+				<label class="block clearfix">
+					<span class="block input-icon input-icon-right">
+						<input type="text" class="form-control"  name="apellido" placeholder="Apellido"  required />
+							<i class="ace-icon fa fa-user"></i>
 					</span>
 				</label>
 			
 				<label class="block clearfix">
 					<span class="block input-icon input-icon-right">
 				             	<input type="email" class="form-control" name="correo" placeholder="Email"  required />
-					                        <i class="ace-icon fa fa-envelope"></i>
+					                <i class="ace-icon fa fa-envelope"></i>
 					</span>
-				</label>
-					<label class="block clearfix">
-						<span class="block input-icon input-icon-right">
-			                     		<input type="text" class="form-control" name="user" placeholder="Usuario"  required />
-                                       				<i class="ace-icon fa fa-user"></i>
-  						</span>
-				</label>
+				
 				<label class="block clearfix">
-                     				<span class="block input-icon input-icon-right">
-		                      			<input type="password" class="form-control" name="pass" placeholder="Password"  required />
-							<i class="ace-icon fa fa-lock"></i>
+                    <span class="block input-icon input-icon-right">
+		                    <input type="password" class="form-control" name="pass" placeholder="Password"  required />
+								<i class="ace-icon fa fa-lock"></i>
 					</span>
 				</label>
 
@@ -222,7 +285,14 @@
 					<span class="block input-icon input-icon-right">
 						<input type="password" class="form-control" name="passr" placeholder="Repetir password" />
 							<i class="ace-icon fa fa-retweet"></i>
-									</span>
+					</span>
+				</label>
+
+				</label>
+					<label class="block clearfix">
+						<span class="block input-icon input-icon-right">
+			                <input type="date" class="form-control" name="fecha_nacimiento"  required />
+  						</span>
 				</label>
 
 				<label class="block">
@@ -263,12 +333,12 @@
 								&nbsp;
 								<a id="btn-login-dark" href="#">Oscuro</a>
 								&nbsp;
-								<span class="blue">/</span>
+								<!--<span class="blue">/</span>
 								&nbsp;
 								<a id="btn-login-blur" href="#">Azul</a>
 								&nbsp;
 								<span class="blue">/</span>
-								&nbsp;
+								&nbsp;-->
 								<a id="btn-login-light" href="#">Claro</a>
 								&nbsp; &nbsp; &nbsp;
 							</div>
