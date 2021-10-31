@@ -1,0 +1,145 @@
+body{
+    
+
+}
+.inicio{
+    background-image: url(../images/Backgroun-inicio.png);
+    background-position: 50%;
+}
+.dark{
+    background-color: black;
+
+}
+
+
+.partfooter{
+    background-color: rgb(54, 53, 53);
+}
+
+.contenedor{
+    width: 90%;
+    max-width: 1000px;
+    margin: auto;
+    
+}
+
+/* Header */
+.textos-header{
+    display: flex;
+}
+.textos-header h1{
+    font-size: 7rem;
+    padding: 0.5em;
+    margin: auto;
+
+}
+
+
+header::before{
+    content: "";
+    display: block;
+    margin-bottom: 80px;
+}
+.white{
+    text-decoration-color: white;
+}
+nav{
+    width: 100%;
+    height: 80px;
+    background: white;
+    border-bottom: 1px solid transparent;
+    box-shadow: 1px 1px 10px rgba(0,0,0,.2) ;
+    position: fixed;
+    top: 0;
+    z-index: 100;
+    transition: ease-in-out 0.5s;
+    
+}
+.nav{
+    display: flex;
+    justify-content:  space-between;
+    height: 80px;
+    width: 100%;
+    align-items: center;
+
+}
+.nav .logo{
+    height: 80px;
+}
+.nav .logo img{
+    height: 100%;
+    vertical-align: top;
+}
+
+.nav .enlaces-header a{
+    color: #5D6678;
+    text-decoration: none;
+    margin-left: 20px;;
+}
+.hamburger{
+    width: 80px;
+    height: 80px;
+    background: grey;
+    text-align: center;
+    z-index: 100;
+    transition: color 0.5s ease-in;
+    display: none;
+}
+
+.hamburger > i{
+    font-size: 25px;
+    line-height: 80px;
+}
+
+.contenido-header{
+    width: 100%;
+    height: 10%;
+    justify-content: space-between;
+    align-items: center;
+    animation: ease-in animat 1s;
+}
+
+/*  Body  */
+
+.menu-principal{
+    display: flex;
+  
+
+}
+.opciones-menu-principal{
+    display: flex;
+    align-items: center;
+    width: 90%;
+    max-width: 1280px;
+    margin: auto;
+}
+.opciones-menu-principal > img{
+        width: 30%;
+        cursor: pointer;
+        margin-left: 15%;
+        margin-top: 8%;
+        animation: ease-in animat 1s;
+        
+}
+.opciones-menu-principal > img:hover{
+    transition-property:all;
+	transition-duration: 1s;
+	transform: scale3d(1.5, 1.5, 100);
+}
+@keyframes animat{
+    0%{
+        transform: scale(0);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+
+@keyframes animat2{ñ
+    100%{
+        transform: scale(0);
+    }
+    110%{
+        transform: scale(1);
+    }
+}

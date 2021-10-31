@@ -283,7 +283,7 @@ if(isset($_POST["ingresar"])){
 				             	<input type="email" class="form-control" name="correo" placeholder="Email"  required />
 					                <i class="ace-icon fa fa-envelope"></i>
 					</span>
-				
+				<br/>
 				<label class="block clearfix">
                     <span class="block input-icon input-icon-right">
 		                    <input type="password" class="form-control" name="pass" placeholder="Password"  required />
