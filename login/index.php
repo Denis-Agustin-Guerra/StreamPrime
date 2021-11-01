@@ -122,6 +122,7 @@ if(isset($_POST["ingresar"])){
 							</div>
 
 							<div class="space-6"></div>
+							<a href="../index.html">Volver</a>
 
 							<div class="position-relative">
 								<div id="login-box" class="login-box visible widget-box no-border">
@@ -308,7 +309,7 @@ if(isset($_POST["ingresar"])){
 
 				<p>Suscripcion: </p>
 
-				</label>
+				<!--</label>
 					<label class="block clearfix">
 						<span class="block input-icon input-icon-right">
 			                <input type="date" class="form-control" name="fecha_nacimiento"  required />
@@ -334,7 +335,7 @@ if(isset($_POST["ingresar"])){
 						<span class="block input-icon input-icon-right">
 			                <input type="date" class="form-control" name="fecha_nacimiento"  required />
   						</span>
-				</label>
+				</label>-->
 
 				<label class="block">
 					<input type="checkbox" class="ace" />

@@ -166,7 +166,7 @@ $resultado = $conexion->query($sql);
 								
                                 <a href="domicilio.php">Domicilios  |</a>
 							
-                                <a href="historiales.php">Historiales  |</a>
+                                <a class="here" href="historiales.php">Historiales  |</a>
 								
                                 <a href="planes.php">Planes  |</a>
 								
@@ -188,16 +188,15 @@ $resultado = $conexion->query($sql);
 										<thead>
 										<tr>
 											
-											<th><b>Nombre</b></th>
-											<th><b>Apellido</b></th>
-											<th><b>Correo</b></th>
-											<th><b>Fecha de nacimiento</b></th>
-											<th><b>Activo</b></th>
-											<th><b>ID</b></th>
+											<th><b>Fecha y hora de reproduccion</b></th>
+											<th><b>ID Usuario</b></th>
+											<th><b>ID Pelicula</b></th>
+											<th><b>ID Historial Pelicula</b></th>
+											
 										</tr>
 										</thead>
 										<?php 
-										$sql="SELECT nombre,apellido,correo,fecha_nacimiento,activo,id_usuario FROM usuario";
+										$sql="SELECT fecha_hora_reproduccion,id_usuario,id_pelicula,id_historial_peliculas FROM historial_peliculas";
 										$result=mysqli_query($conexion,$sql);
 										
 										while($mostrar=mysqli_fetch_array($result)){
@@ -205,32 +204,30 @@ $resultado = $conexion->query($sql);
 										
 										?>
 										<tr>
-											<td><?php  echo $mostrar['nombre']  ?></td>
-											<td><?php  echo $mostrar['apellido']  ?></td>
-											<td><?php  echo $mostrar['correo']  ?></td>
-											<td><?php  echo $mostrar['fecha_nacimiento']  ?></td>
-											<td><?php  echo $mostrar['activo']  ?></td>
+											<td><?php  echo $mostrar['fecha_hora_reproduccion']  ?></td>
 											<td><?php  echo $mostrar['id_usuario']  ?></td>
+											<td><?php  echo $mostrar['id_pelicula']  ?></td>
+											<td><?php  echo $mostrar['id_historial_peliculas']  ?></td>
+		
 										</tr>
 										<?php
 										}
 										?>
-									</table id="table">
+									</table >
 
-									<table>
+									<table id="table">
 										<thead>
 										<tr>
 											
-											<th><b>Nombre</b></th>
-											<th><b>Apellido</b></th>
-											<th><b>Correo</b></th>
-											<th><b>Fecha de nacimiento</b></th>
-											<th><b>Activo</b></th>
-											<th><b>ID</b></th>
+											<th><b>Fecha y hora de reproduccion</b></th>
+											<th><b>ID Usuario</b></th>
+											<th><b>ID Cancion</b></th>
+											<th><b>ID Historial Musica</b></th>
+											
 										</tr>
 										</thead>
 										<?php 
-										$sql="SELECT nombre,apellido,correo,fecha_nacimiento,activo,id_usuario FROM usuario";
+										$sql="SELECT fecha_hora_reproduccion,id_usuario,id_cancion,id_historial_musica FROM historial_musica";
 										$result=mysqli_query($conexion,$sql);
 										
 										while($mostrar=mysqli_fetch_array($result)){
@@ -238,17 +235,16 @@ $resultado = $conexion->query($sql);
 										
 										?>
 										<tr>
-											<td><?php  echo $mostrar['nombre']  ?></td>
-											<td><?php  echo $mostrar['apellido']  ?></td>
-											<td><?php  echo $mostrar['correo']  ?></td>
-											<td><?php  echo $mostrar['fecha_nacimiento']  ?></td>
-											<td><?php  echo $mostrar['activo']  ?></td>
+											<td><?php  echo $mostrar['fecha_hora_reproduccion']  ?></td>
 											<td><?php  echo $mostrar['id_usuario']  ?></td>
+											<td><?php  echo $mostrar['id_cancion']  ?></td>
+											<td><?php  echo $mostrar['id_historial_musica']  ?></td>
+		
 										</tr>
 										<?php
 										}
 										?>
-									</table>
+									</table >
 								</div>
 
 								<div class="table" id="idtabla">
