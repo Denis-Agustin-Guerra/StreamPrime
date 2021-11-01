@@ -10,6 +10,41 @@
 
 
 /*---------------------------*/
+
+/*  admin.php  */
+
+.table{
+    margin: 10px auto;
+    width: 90%;
+}
+table{
+    background-color: white;
+    text-align: left;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td{
+    
+    padding: 10px;
+}
+
+thead{
+    background-color: cornflowerblue;
+    border-bottom: solid 5px grey ;
+    color: white;
+}
+
+tr:nth-child(even){
+    background-color: #ddd;
+}
+
+tr:hover td{
+    background-color: grey;
+    color: honeydew;
+}
+
+/*---------------------------*/
 body{
     
 

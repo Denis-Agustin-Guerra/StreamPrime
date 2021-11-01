@@ -164,7 +164,8 @@ $resultado = $conexion->query($sql);
 						
 						<div class="page-header">
 							<h1>
-								Usuarios
+								<a href="">Usuarios</a>
+								
 								<small>
 									<i class="ace-icon fa fa-angle-double-right"></i>
 
@@ -175,15 +176,19 @@ $resultado = $conexion->query($sql);
 						<div class="row">
 							<div class="col-xs-12">
 								<!-- PAGE CONTENT BEGINS -->
+								<div class="table">
 									<table>
+										<thead>
 										<tr>
-											<td>Nombre</td>
-											<td>Apellido</td>
-											<td>Correo</td>
-											<td>Fecha de nacimiento</td>
-											<td>Activo</td>
-											<td>ID</td>
+											
+											<th><b>Nombre</b></th>
+											<th><b>Apellido</b></th>
+											<th><b>Correo</b></th>
+											<th><b>Fecha de nacimiento</b></th>
+											<th><b>Activo</b></th>
+											<th><b>ID</b></th>
 										</tr>
+										</thead>
 										<?php 
 										$sql="SELECT nombre,apellido,correo,fecha_nacimiento,activo,id_usuario FROM usuario";
 										$result=mysqli_query($conexion,$sql);
@@ -204,6 +209,7 @@ $resultado = $conexion->query($sql);
 										}
 										?>
 									</table>
+								</div>
 
 								<!-- PAGE CONTENT ENDS -->
 							</div><!-- /.col -->
