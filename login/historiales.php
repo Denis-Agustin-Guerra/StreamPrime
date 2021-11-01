@@ -75,8 +75,7 @@ $resultado = $conexion->query($sql);
 					<a href="admin.php" class="navbar-brand">
 						<small>
 							<i class="fa fa-user"></i>
-							Sistema de Usuarios >> Edicion - Carga en Base de datos
-                            <i class="fa fa-pencil"></i>
+							Sistema de Usuarios
 						</small>
 					</a>
 				</div>
@@ -124,11 +123,11 @@ $resultado = $conexion->query($sql);
 
 				<div class="sidebar-shortcuts" id="sidebar-shortcuts">
 					<div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
-						<button class="btn btn-success">
-							<a href="admin.php"><i class="ace-icon fa fa-signal"></i></a>
+						
+						<button class="btn btn-info">
+							<a href="editar-entrada.php"><i class="ace-icon fa fa-pencil"></i></a>
 							
 						</button>
-
 					</div>
 
 					<div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
@@ -183,7 +182,41 @@ $resultado = $conexion->query($sql);
 						<div class="row">
 							<div class="col-xs-12">
 								<!-- PAGE CONTENT BEGINS -->
-								<div class="table">
+								<img src="../assets/images/gallery/img-titulos-tabla.jpg" alt="">
+								<div class="table" id="idtabla">
+									<table id="table">
+										<thead>
+										<tr>
+											
+											<th><b>Nombre</b></th>
+											<th><b>Apellido</b></th>
+											<th><b>Correo</b></th>
+											<th><b>Fecha de nacimiento</b></th>
+											<th><b>Activo</b></th>
+											<th><b>ID</b></th>
+										</tr>
+										</thead>
+										<?php 
+										$sql="SELECT nombre,apellido,correo,fecha_nacimiento,activo,id_usuario FROM usuario";
+										$result=mysqli_query($conexion,$sql);
+										
+										while($mostrar=mysqli_fetch_array($result)){
+
+										
+										?>
+										<tr>
+											<td><?php  echo $mostrar['nombre']  ?></td>
+											<td><?php  echo $mostrar['apellido']  ?></td>
+											<td><?php  echo $mostrar['correo']  ?></td>
+											<td><?php  echo $mostrar['fecha_nacimiento']  ?></td>
+											<td><?php  echo $mostrar['activo']  ?></td>
+											<td><?php  echo $mostrar['id_usuario']  ?></td>
+										</tr>
+										<?php
+										}
+										?>
+									</table id="table">
+
 									<table>
 										<thead>
 										<tr>
@@ -216,6 +249,10 @@ $resultado = $conexion->query($sql);
 										}
 										?>
 									</table>
+								</div>
+
+								<div class="table" id="idtabla">
+									
 								</div>
 
 								<!-- PAGE CONTENT ENDS -->

@@ -75,8 +75,7 @@ $resultado = $conexion->query($sql);
 					<a href="admin.php" class="navbar-brand">
 						<small>
 							<i class="fa fa-user"></i>
-							Sistema de Usuarios >> Edicion - Carga en Base de datos
-                            <i class="fa fa-pencil"></i>
+							Sistema de Usuarios
 						</small>
 					</a>
 				</div>
@@ -124,11 +123,11 @@ $resultado = $conexion->query($sql);
 
 				<div class="sidebar-shortcuts" id="sidebar-shortcuts">
 					<div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
-						<button class="btn btn-success">
-							<a href="admin.php"><i class="ace-icon fa fa-signal"></i></a>
+						
+						<button class="btn btn-info">
+							<a href="editar-entrada.php"><i class="ace-icon fa fa-pencil"></i></a>
 							
 						</button>
-
 					</div>
 
 					<div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
@@ -161,11 +160,11 @@ $resultado = $conexion->query($sql);
 						
 						<div class="page-header">
 						<h1>
-								<a class="here" href="admin.php">Usuarios  |</a>
+								<a href="admin.php">Usuarios  |</a>
 								
                                 <a href="suscripcion.php">Suscripcion  |</a>
 								
-                                <a href="domicilio.php">Domicilios  |</a>
+                                <a class="here" href="domicilio.php">Domicilios  |</a>
 							
                                 <a href="historiales.php">Historiales  |</a>
 								
@@ -187,17 +186,22 @@ $resultado = $conexion->query($sql);
 									<table>
 										<thead>
 										<tr>
-											
-											<th><b>Nombre</b></th>
-											<th><b>Apellido</b></th>
-											<th><b>Correo</b></th>
-											<th><b>Fecha de nacimiento</b></th>
-											<th><b>Activo</b></th>
-											<th><b>ID</b></th>
+											<th><b>Calle</b></th>
+											<th><b>Numero</b></th>
+											<th><b>Piso</b></th>
+											<th><b>Departamento</b></th>
+											<th><b>Barrio</b></th>
+											<th><b>Manzana</b></th>
+											<th><b>Casa</b></th>
+											<th><b>Provincia</b></th>
+											<th><b>Localidad</b></th>
+											<th><b>Codigo postal</b></th>
+											<th><b>ID Suscrpcion</b></th>
+											<th><b>ID Domicilio</b></th>
 										</tr>
 										</thead>
 										<?php 
-										$sql="SELECT nombre,apellido,correo,fecha_nacimiento,activo,id_usuario FROM usuario";
+										$sql="SELECT calle,numero,piso,departamento,barrio,manzana,casa,provincia,localidad,codigo_postal,id_suscripcion,id_domicilio FROM domicilio";
 										$result=mysqli_query($conexion,$sql);
 										
 										while($mostrar=mysqli_fetch_array($result)){
@@ -205,12 +209,18 @@ $resultado = $conexion->query($sql);
 										
 										?>
 										<tr>
-											<td><?php  echo $mostrar['nombre']  ?></td>
-											<td><?php  echo $mostrar['apellido']  ?></td>
-											<td><?php  echo $mostrar['correo']  ?></td>
-											<td><?php  echo $mostrar['fecha_nacimiento']  ?></td>
-											<td><?php  echo $mostrar['activo']  ?></td>
-											<td><?php  echo $mostrar['id_usuario']  ?></td>
+											<td><?php  echo $mostrar['calle']  ?></td>
+											<td><?php  echo $mostrar['numero']  ?></td>
+											<td><?php  echo $mostrar['piso']  ?></td>
+											<td><?php  echo $mostrar['departamento']  ?></td>
+											<td><?php  echo $mostrar['barrio']  ?></td>
+											<td><?php  echo $mostrar['manzana']  ?></td>
+											<td><?php  echo $mostrar['casa']  ?></td>
+											<td><?php  echo $mostrar['provincia']  ?></td>
+											<td><?php  echo $mostrar['localidad']  ?></td>
+											<td><?php  echo $mostrar['codigo_postal']  ?></td>
+											<td><?php  echo $mostrar['id_suscripcion']  ?></td>
+											<td><?php  echo $mostrar['id_domicilio']  ?></td>
 										</tr>
 										<?php
 										}

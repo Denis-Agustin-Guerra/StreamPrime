@@ -75,7 +75,7 @@ $resultado = $conexion->query($sql);
 					<a href="admin.php" class="navbar-brand">
 						<small>
 							<i class="fa fa-user"></i>
-							Sistema de Usuarios >> Base de datos
+							Sistema de Usuarios
 						</small>
 					</a>
 				</div>
@@ -123,11 +123,7 @@ $resultado = $conexion->query($sql);
 
 				<div class="sidebar-shortcuts" id="sidebar-shortcuts">
 					<div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
-						<button class="btn btn-success">
-							<a href="consultar.php"><i class="ace-icon fa fa-signal"></i></a>
-							
-						</button>
-
+						
 						<button class="btn btn-info">
 							<a href="editar-entrada.php"><i class="ace-icon fa fa-pencil"></i></a>
 							
@@ -163,46 +159,23 @@ $resultado = $conexion->query($sql);
 					<div class="page-content">
 						
 						<div class="page-header">
-							<h1>
-								<a href="">Usuarios</a>
-								<small>
-									<i class="ace-icon fa fa-angle-double-right"></i>
-								</small>
-
-                                <a href="">Suscripcion</a>
-								<small>
-									<i class="ace-icon fa fa-angle-double-right"></i>
-								</small>
-
-                                <a href="">Domicilios</a>
-								<small>
-									<i class="ace-icon fa fa-angle-double-right"></i>
-								</small>
-
-                                <a href="">Historiales</a>
-								<small>
-									<i class="ace-icon fa fa-angle-double-right"></i>
-								</small>
-
-                                <a href="">Planes</a>
-								<small>
-									<i class="ace-icon fa fa-angle-double-right"></i>
-								</small>
-
-                                <a href="">Facturacion</a>
-								<small>
-									<i class="ace-icon fa fa-angle-double-right"></i>
-								</small>
-
-                                <a href="">Base Peliculas</a>
-								<small>
-									<i class="ace-icon fa fa-angle-double-right"></i>
-								</small>
-
-                                <a href="">Base Musica</a>
-								<small>
-									<i class="ace-icon fa fa-angle-double-right"></i>
-								</small>
+						<h1>
+								<a href="admin.php">Usuarios  |</a>
+								
+                                <a class="here" href="suscripcion.php">Suscripcion  |</a>
+								
+                                <a href="domicilio.php">Domicilios  |</a>
+							
+                                <a href="historiales.php">Historiales  |</a>
+								
+                                <a href="planes.php">Planes  |</a>
+								
+                                <a href="facturacion.php">Facturacion  |</a>
+								
+                                <a href="base-peliculas.php">Base Peliculas  |</a>
+								
+                                <a href="base-musica.php">Base Musica  |</a>
+								
 							</h1>
 						</div><!-- /.page-header -->
 
@@ -213,17 +186,19 @@ $resultado = $conexion->query($sql);
 									<table>
 										<thead>
 										<tr>
-											
-											<th><b>Nombre</b></th>
-											<th><b>Apellido</b></th>
-											<th><b>Correo</b></th>
-											<th><b>Fecha de nacimiento</b></th>
-											<th><b>Activo</b></th>
+											<th><b>Numero de tarjeta</b></th>
+											<th><b>Nombre titular</b></th>
+											<th><b>Fecha de vencimiento</b></th>
+											<th><b>CVV</b></th>
+											<th><b>DNI</b></th>
 											<th><b>ID</b></th>
+											<th><b>ID Plan</b></th>
+											<th><b>ID Duracion Precio</b></th>
+											<th><b>ID Suscripcion</b></th>
 										</tr>
 										</thead>
 										<?php 
-										$sql="SELECT nombre,apellido,correo,fecha_nacimiento,activo,id_usuario FROM usuario";
+										$sql="SELECT numero_tarjeta,nombre_titular,fecha_vencimiento,cvv,dni,id_usuario,id_plan,id_duracion_precio,id_suscripcion FROM suscripcion";
 										$result=mysqli_query($conexion,$sql);
 										
 										while($mostrar=mysqli_fetch_array($result)){
@@ -231,12 +206,15 @@ $resultado = $conexion->query($sql);
 										
 										?>
 										<tr>
-											<td><?php  echo $mostrar['nombre']  ?></td>
-											<td><?php  echo $mostrar['apellido']  ?></td>
-											<td><?php  echo $mostrar['correo']  ?></td>
-											<td><?php  echo $mostrar['fecha_nacimiento']  ?></td>
-											<td><?php  echo $mostrar['activo']  ?></td>
+											<td><?php  echo $mostrar['numero_tarjeta']  ?></td>
+											<td><?php  echo $mostrar['nombre_titular']  ?></td>
+											<td><?php  echo $mostrar['fecha_vencimiento']  ?></td>
+											<td><?php  echo $mostrar['cvv']  ?></td>
+											<td><?php  echo $mostrar['dni']  ?></td>
 											<td><?php  echo $mostrar['id_usuario']  ?></td>
+											<td><?php  echo $mostrar['id_plan']  ?></td>
+											<td><?php  echo $mostrar['id_duracion_precio']  ?></td>
+											<td><?php  echo $mostrar['id_suscripcion']  ?></td>
 										</tr>
 										<?php
 										}
