@@ -1,3 +1,15 @@
+/*   index.php  */
+#login-box{
+    background-color: black;
+}
+.widget-main{
+    background-color: black;
+}
+
+
+
+
+/*---------------------------*/
 body{
     
 
@@ -75,6 +87,11 @@ nav{
     color: #5D6678;
     text-decoration: none;
     margin-left: 20px;;
+    opacity: 0.5;
+}
+
+.enlaces-header a:hover{
+        opacity: 1;
 }
 .hamburger{
     width: 80px;
@@ -113,18 +130,29 @@ nav{
     max-width: 1280px;
     margin: auto;
 }
-.opciones-menu-principal > img{
-        width: 30%;
+.opciones-menu-principal a{
+    width: 30%;
         cursor: pointer;
         margin-left: 15%;
         margin-top: 8%;
         animation: ease-in animat 1s;
+        transition-property:all;
+	transition-duration: 0.5s;
+}
+.opciones-menu-principal a img{
+        width: 100%;
+        cursor: pointer;
+        /*margin-left: 15%;
+        margin-top: 8%;
+        animation: ease-in animat 1s;
+        transition-property:all;
+	transition-duration: 0.5s;*/
         
 }
-.opciones-menu-principal > img:hover{
+.opciones-menu-principal a:hover{
     transition-property:all;
-	transition-duration: 1s;
-	transform: scale3d(1.5, 1.5, 100);
+	transition-duration: 0.5s;
+	transform: scale3d(1.2, 1.2, 100);
 }
 @keyframes animat{
     0%{
@@ -135,11 +163,41 @@ nav{
     }
 }
 
-@keyframes animat2{ñ
-    100%{
-        transform: scale(0);
-    }
-    110%{
-        transform: scale(1);
-    }
+/*  cartelera de peliculas */
+.body-cartelera{
+    background-color: #E50914;
+}
+.cartelera{
+    width: 90%;
+    max-width: 1000px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    
+    
+}
+
+.pelicula{
+    width: 30%;
+    padding: 10px;
+    margin: 1.5%;
+    background-color: black;
+    border-radius: 5px;
+    transition-duration: 0.5s;
+
+}
+.pelicula:hover{
+    transition-property:all;
+	transition-duration: 0.5s;
+	transform: scale3d(1.07, 1.07, 100);
+}
+.pelicula a{
+    width: 90%;
+}
+.pelicula a img{
+    width: 100%;
+}
+
+.peliculas h3{
+
 }

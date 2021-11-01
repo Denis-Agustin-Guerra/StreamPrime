@@ -66,8 +66,6 @@ if(isset($_POST["ingresar"])){
 	}
 
 }
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -82,6 +80,8 @@ if(isset($_POST["ingresar"])){
 		<!-- bootstrap & fontawesome -->
 		<link rel="stylesheet" href="assets/css/bootstrap.min.css" />
 		<link rel="stylesheet" href="assets/font-awesome/4.5.0/css/font-awesome.min.css" />
+
+		<link rel="stylesheet" href="../assets/css/estilos.css" />
 
 		<!-- text fonts -->
 		<link rel="stylesheet" href="assets/css/fonts.googleapis.com.css" />
@@ -296,6 +296,37 @@ if(isset($_POST["ingresar"])){
 						<input type="password" class="form-control" name="passr" placeholder="Repetir password" />
 							<i class="ace-icon fa fa-retweet"></i>
 					</span>
+				</label>
+
+				</label>
+					<label class="block clearfix">
+						<span class="block input-icon input-icon-right">
+			                <input type="date" class="form-control" name="fecha_nacimiento"  required />
+  						</span>
+				</label>
+				
+
+				<p>Suscripcion: </p>
+
+				</label>
+					<label class="block clearfix">
+						<span class="block input-icon input-icon-right">
+			                <input type="date" class="form-control" name="fecha_nacimiento"  required />
+  						</span>
+				</label>
+
+				</label>
+					<label class="block clearfix">
+						<span class="block input-icon input-icon-right">
+			                <input type="date" class="form-control" name="fecha_nacimiento"  required />
+  						</span>
+				</label>
+
+				</label>
+					<label class="block clearfix">
+						<span class="block input-icon input-icon-right">
+			                <input type="date" class="form-control" name="fecha_nacimiento"  required />
+  						</span>
 				</label>
 
 				</label>
